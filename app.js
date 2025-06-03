@@ -9,9 +9,13 @@ function Book(id, title, author, pages, read) {
 }
 
 function addBookToLibrary(title, author, pages, read) {
-    id = self.crypto.randomUUID();
-    // create new book
-    const book = new Book(id, title, author, pages, read)
-    // store it in myLibrary
-    myLibrary.push(book);
+    let id = self.crypto.randomUUID();
+    const newBook = new Book(id, title, author, pages, read)
+    myLibrary.push(newBook);
+}
+
+function displayBooks() {
+    // loop through array
+    
+    // display book to page
 }
