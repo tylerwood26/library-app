@@ -8,9 +8,11 @@ function Book(id, title, author, pages, read) {
     this.read = read;
 }
 
-// next 2 lines are temp test 
+// next 4 lines are temp test 
 const testBook = new Book(2, 'Test', 'Tyler', 302, 'not read');
 myLibrary.push(testBook);
+const testBook2 = new Book (7, 'Test 2', 'Dave', 455, 'read');
+myLibrary.push(testBook2);
 
 function addBookToLibrary(title, author, pages, read) {
     let id = self.crypto.randomUUID();
@@ -21,6 +23,7 @@ function addBookToLibrary(title, author, pages, read) {
 function displayBooks(book) {
     const htmlContainerDiv = document.querySelector(".container");
     const createNewCard = document.createElement("div");
+    createNewCard.classList.add("card");             
 
     const titleH1 = document.createElement("h1");
     titleH1.textContent = book.title;
