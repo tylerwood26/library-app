@@ -25,28 +25,32 @@ function displayBooks(book) {
     const createNewCard = document.createElement("div");
     createNewCard.classList.add("card");             
 
+    let bookData = [];
+
     const titleH1 = document.createElement("h1");
     titleH1.textContent = book.title;
+    bookData.push(titleH1);
     
     const authorH2 = document.createElement("h2");
     authorH2.textContent = book.author;
+    bookData.push(authorH2);
     
     const pagesH3 = document.createElement("h3");
     pagesH3.textContent = book.pages;
+    bookData.push(pagesH3);
     
     const readH3 = document.createElement("h3");
     readH3.textContent = book.read;
+    bookData.push(readH3);
     
     const idH4 = document.createElement("h4");
     idH4.textContent = book.id;
-    
-    createNewCard.appendChild(titleH1);
-    createNewCard.appendChild(authorH2);
-    createNewCard.appendChild(pagesH3);
-    createNewCard.appendChild(readH3);
-    createNewCard.appendChild(idH4);
+    bookData.push(idH4);
 
-    // append card div to container
+    bookData.forEach( (currentBookData) => {
+        createNewCard.appendChild(currentBookData);
+    })
+
     htmlContainerDiv.appendChild(createNewCard);
 }
 
