@@ -60,3 +60,15 @@ function displayBooks(book) {
 }
 
 myLibrary.forEach(displayBooks);
+
+const dialog = document.querySelector("dialog");
+const openModalButton = document.querySelector(".open-modal");
+const closeModalButton = document.querySelector(".close-modal");
+
+openModalButton.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+closeModalButton.addEventListener("click", () => {
+    dialog.close();
+});

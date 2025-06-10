@@ -25,5 +25,11 @@
     margin: auto;
     margin-top: 20px;
     padding: 10px;
-    
+}
+
+dialog {
+    width: 50vw;
+    height: 50vh;
+    margin: auto;
+    background-color: gray;
 }
