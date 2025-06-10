@@ -15,4 +15,15 @@
 
 .card {
     justify-self: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.open-modal{
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    padding: 10px;
+    
 }
