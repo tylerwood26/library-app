@@ -13,7 +13,25 @@
     </div>
     <dialog>
         <button class="close-modal" autofocus>X</button>
-        <p>Test Modal</p>
+        <h1 class="modal-title">Enter New Book</h1>
+        <form action="" class="book-form">
+
+            <label for="book-title">Title</label>
+            <input type="text" id="book-title" name="book-title">
+
+            <label for="book-author">Author</label>
+            <input type="text" id="book-author" name="book-author">
+
+            <label for="book-pages">Pages</label>
+            <input type="text" name="book-pages" id="book-pages">
+
+            <p>Has the book been read?</p>
+            <input type="radio" id="radio-yes" name="book-read" value="yes">
+            <label for="radio-yes">Yes</label>
+            <input type="radio" name="book-read" id="radio-no" value="no">
+            <label for="radio-no">No</label>
+
+        </form>
     </dialog>
     <script src="app.js"></script>
 </body>
