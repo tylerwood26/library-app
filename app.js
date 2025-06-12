@@ -39,11 +39,7 @@ function displayBooks(book) {
     
     const readH3 = document.createElement("h3");
     readH3.textContent = read + book.read;
-    bookData.push(readH3);
-    
-    const idH4 = document.createElement("h4");
-    idH4.textContent = idLabel + book.id;
-    bookData.push(idH4);
+    bookData.push(readH3); 
     
     bookData.forEach( (currentBookData) => {
         createNewCard.appendChild(currentBookData);
@@ -74,7 +70,6 @@ submitButton.onclick = (event) => {
     read = document.querySelector('input[name="book-read"]:checked').value;
     console.log(title, author, pages, read);
     addBookToLibrary(title, author, pages, read);
-    // myLibrary.forEach(displayBooks);
     const lastItem = myLibrary.length - 1;
     displayBooks(myLibrary[lastItem]);
     dialog.close();
