@@ -18,12 +18,12 @@ function displayBooks(book) {
     const htmlContainerDiv = document.querySelector(".container");
     const createNewCard = document.createElement("div");
     createNewCard.classList.add("card");             
+    createNewCard.setAttribute('book-id', book.id);
     
     let bookData = [];
     let authorLabel = "Author: ";
     let pagesLabel = "Pages: ";
-    let read = "Read: "
-    let idLabel = "ID: ";
+    let read = "Read: ";
     
     const titleH1 = document.createElement("h1");
     titleH1.textContent = book.title;
@@ -39,7 +39,14 @@ function displayBooks(book) {
     
     const readH3 = document.createElement("h3");
     readH3.textContent = read + book.read;
-    bookData.push(readH3); 
+    bookData.push(readH3);
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.setAttribute("type", "button");
+    deleteBtn.setAttribute("id", 'delete-btn');
+    deleteBtn.setAttribute("onclick", 'deleteBook(event)');
+    deleteBtn.innerHTML = "Delete";
+    bookData.push(deleteBtn);
     
     bookData.forEach( (currentBookData) => {
         createNewCard.appendChild(currentBookData);
@@ -47,7 +54,6 @@ function displayBooks(book) {
     
     htmlContainerDiv.appendChild(createNewCard);
 }
-
 
 const dialog = document.querySelector("dialog");
 const openModalButton = document.querySelector(".open-modal");
@@ -73,4 +79,24 @@ submitButton.onclick = (event) => {
     const lastItem = myLibrary.length - 1;
     displayBooks(myLibrary[lastItem]);
     dialog.close();
+}
+
+function deleteBook(event) {
+    let parentCard = event.target.closest('.card');
+
+    let bookId = parentCard.getAttribute('book-id');
+    
+    let matchIndex = myLibraryIdMatchIndex(bookId);
+
+    // delete matching book from screen and array
+    myLibrary.splice(matchIndex, 1);
+    parentCard.remove();
+}
+
+function myLibraryIdMatchIndex(bookId) {
+    for (let i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].id === bookId) {
+            return i;
+        }
+    }
 }
