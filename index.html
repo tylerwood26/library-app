@@ -25,16 +25,17 @@
             </div>
             <div class="pages">
                 <label for="book-pages">Pages</label>
-                <input type="text" name="book-pages" id="book-pages">
+                <input type="number" name="book-pages" id="book-pages">
             </div>
             <div class="read">
                 <p>Has the book been read?</p>
-                <input type="radio" id="radio-yes" name="book-read" value="yes">
+                <input type="radio" id="radio-yes" name="book-read" value="Yes">
                 <label for="radio-yes">Yes</label>
-                <input type="radio" name="book-read" id="radio-no" value="no">
+                <input type="radio" name="book-read" id="radio-no" value="No">
                 <label for="radio-no">No</label>
             </div>
-            <input class="submit" type="submit" value="Submit">
+            <!-- <input class="submit" type="submit" value="Submit"> -->
+             <button class="submit" type="submit">Add Book</button>
         </form>
     </dialog>
     <script src="app.js"></script>
