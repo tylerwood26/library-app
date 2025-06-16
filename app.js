@@ -6,6 +6,24 @@ function Book(id, title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.changeReadStatus = function() {
+        if (this.read === 'Yes') {
+            this.read = 'No';
+        }
+        else {
+            this.read = 'Yes';
+        }
+        // change read status on screen
+        // empty dom
+        const container = document.querySelector('.container');
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        }
+        // redisplay dom
+        myLibrary.forEach(function(currentBook) {
+            displayBooks(currentBook);
+        })
+    }
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -40,6 +58,13 @@ function displayBooks(book) {
     const readH3 = document.createElement("h3");
     readH3.textContent = read + book.read;
     bookData.push(readH3);
+
+    const changeReadStatusBtn = document.createElement("button");
+    changeReadStatusBtn.setAttribute("type", 'button');
+    changeReadStatusBtn.setAttribute('id', 'change-read-status');
+    changeReadStatusBtn.innerHTML = 'Change Read Status';
+    changeReadStatusBtn.setAttribute('onclick', 'whatBookToChange(event)');
+    bookData.push(changeReadStatusBtn);
 
     const deleteBtn = document.createElement("button");
     deleteBtn.setAttribute("type", "button");
@@ -82,15 +107,21 @@ submitButton.onclick = (event) => {
 }
 
 function deleteBook(event) {
-    let parentCard = event.target.closest('.card');
-
-    let bookId = parentCard.getAttribute('book-id');
+    
+    let bookId = getBookId(event);
     
     let matchIndex = myLibraryIdMatchIndex(bookId);
-
+    
     // delete matching book from screen and array
+    let parentCard = event.target.closest('.card');
     myLibrary.splice(matchIndex, 1);
     parentCard.remove();
+}
+
+function getBookId(event) {
+    let parentCard = event.target.closest('.card');
+
+    return parentCard.getAttribute('book-id');
 }
 
 function myLibraryIdMatchIndex(bookId) {
@@ -99,4 +130,12 @@ function myLibraryIdMatchIndex(bookId) {
             return i;
         }
     }
+}
+
+function whatBookToChange(event) {
+    let bookId = getBookId(event);
+
+    let bookIndex = myLibraryIdMatchIndex(bookId);
+
+    myLibrary[bookIndex].changeReadStatus();
 }
